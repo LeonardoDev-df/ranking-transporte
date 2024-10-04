@@ -1,0 +1,102 @@
+/* src/style/HomePage.css */
+.home-layout {
+    display: flex;
+    min-height: 100vh;
+    /*padding: 20px;*/
+  }
+  
+  .home-aside {
+    width: 250px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ddd;
+  }
+  
+  .home-aside h2 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    padding-top: 25px;
+  }
+  
+  .home-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+/* Estilo para o botão Ver Gráfico */
+.aside-button {
+    background: none; /* Remove o fundo */
+    border: none; /* Remove a borda */
+    color: #007bff; /* Cor do link */
+    cursor: pointer; /* Cursor de link */
+    text-decoration: none; /* Aparece como um link */
+    font-size: 1rem; /* Tamanho do texto */
+    margin-left: 60px; /* Espaço à esquerda */
+    padding: 0; /* Remove o padding */
+    padding-bottom: 10px;
+    transition: color 0.3s ease; /* Transição suave para a cor */
+  }
+  
+  /* Estilo para o botão Responder Avaliação */
+  .home-button {
+    background: none; /* Remove o fundo */
+    border: none; /* Remove a borda */
+    color: #007bff; /* Cor do link */
+    cursor: pointer; /* Cursor de link */
+    text-decoration: none; /* Aparece como um link */
+    font-size: 1rem; /* Tamanho do texto */
+    margin-left: 60px; /* Espaço à esquerda */
+    padding: 0; /* Remove o padding */
+    padding-bottom: 10px;
+    transition: color 0.3s ease; /* Transição suave para a cor */
+  }
+  
+  /* Estilo do hover (ao passar o mouse) */
+.aside-button:hover,
+.home-button:hover {
+  color: #0056b3; /* Muda para um tom mais escuro de azul */
+  text-decoration: none; /* Remove o sublinhado no hover */
+}
+
+/* Remove a estilização padrão dos links */
+.link-button {
+  text-decoration: none;
+}
+  
+  @media (max-width: 768px) {
+    .home-layout {
+      flex-direction: column;
+    }
+  
+    .home-aside {
+      width: 100%;
+      margin-bottom: 20px;
+      border-right: none;
+    }
+  
+    .home-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  
+    .home-button {
+      font-size: 0.9rem;
+      padding: 10px 16px;
+    }
+  
+    .home-content {
+      padding: 10px;
+    }
+  }
+  

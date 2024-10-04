@@ -1,0 +1,37 @@
+/* src/App.css */
+.App {
+  text-align: center;
+  margin: 20px;
+}
+
+form {
+  margin-bottom: 30px;
+  display: inline-block;
+  text-align: left;
+}
+
+form input[type="email"],
+form input[type="number"] {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+form input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

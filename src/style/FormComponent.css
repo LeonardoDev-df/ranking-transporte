@@ -1,0 +1,213 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    margin: 0 auto;
+    padding:110px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-checkbox {
+    margin-left: 10px;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.company-section {
+    margin-bottom: 20px;
+}
+
+.company-title {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.rating-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.rating-input {
+    width: 50px;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .empresa-rating {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .row1 {
+    grid-column: span 1;
+  }
+  
+  .row2 {
+    grid-column: span 1;
+  }
+
+  .rating-item {
+    display: flex;
+    align-items: center; /* Alinha o label e o input verticalmente no centro */
+    margin-bottom: 10px; /* Espaçamento entre as avaliações */
+  }
+  
+  .rating-label {
+    flex: 1; /* Faz com que o label ocupe espaço proporcional */
+    font-size: 1rem; /* Tamanho da fonte do label */
+    color: #333; /* Cor do texto */
+  }
+  
+  .rating-input {
+    width: 50px; /* Largura do campo de input */
+    padding: 5px; /* Preenchimento dentro do campo */
+    margin-left: 10px; /* Espaço à esquerda do input */
+    border: 1px solid #ccc; /* Borda do campo */
+    border-radius: 4px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte do input */
+  }
+
+  .terms-container {
+    border: 1px solid #ccc; /* Borda ao redor da caixa */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 15px; /* Preenchimento interno */
+    background-color: #f9f9f9; /* Cor de fundo */
+    margin-bottom: 20px; /* Espaçamento inferior */
+  }
+  
+  .terms-title {
+    font-size: 1.5rem; /* Tamanho do título */
+    color: #007bff; /* Cor do título */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+  }
+  
+  .terms-scroll {
+    max-height: 150px; /* Altura máxima da caixa de rolagem */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    padding: 10px; /* Preenchimento interno */
+    border: 1px solid #ccc; /* Borda da caixa de rolagem */
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: #fff; /* Cor de fundo da caixa de rolagem */
+  }
+  
+  .terms-text {
+    font-size: 0.9rem; /* Tamanho da fonte do texto */
+    color: #333; /* Cor do texto */
+  }
+  
+  .terms-acceptance {
+    margin-top: 10px; /* Espaçamento acima do campo de aceitação */
+  }
+  
+
+  .form-fields {
+    display: flex;
+    flex-direction: column; /* Organiza os campos em coluna */
+    gap: 1rem; /* Espaçamento entre os campos */
+    width: 50%;
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column; /* Faz com que label e input fiquem empilhados */
+    margin-bottom: 1rem; /* Margem inferior */
+  }
+  
+  .form-field label {
+    margin-bottom: 0.5rem; /* Espaçamento entre label e input */
+    font-weight: bold; /* Destaque a label */
+  }
+  
+  .form-field input,
+  .form-field select {
+    padding: 0.5rem; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Animação ao focar */
+  }
+  
+  .form-field input:focus,
+  .form-field select:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão */
+  }
+  
+  .form-field select {
+    background-color: #f9f9f9; /* Fundo padrão para select */
+  }
+  
+  
+  
+  /* Estilo responsivo */
+  @media (max-width: 768px) {
+    .ratings-grid {
+      grid-template-columns: 1fr; /* Coloca as empresas em uma coluna em dispositivos menores */
+    }
+  }
+  
+
+/* Estilo responsivo */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-title, .company-title {
+        font-size: 1.2rem;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
