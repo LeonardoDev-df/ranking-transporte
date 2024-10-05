@@ -1,29 +1,45 @@
-/* src/GraphComponent.css */
 .graph-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 500px; /* Defina uma altura máxima para evitar que o gráfico se estenda demais */
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  .graph-container {
+    padding: 10px;
+    width: 100%; /* Ajusta a largura para caber melhor em dispositivos móveis */
   }
-  
-  canvas {
-    width: 100% !important;
-    height: auto !important;
-  }
-  
-  @media (max-width: 768px) {
-    .graph-container {
-      padding: 10px;
-    }
-  }
-  
+
   p {
-    font-size: 16px;
-    color: #333;
-    text-align: center;
+    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
   }
-  
+}
+
+/* Ajuste adicional para telas muito pequenas */
+@media (max-width: 480px) {
+  canvas {
+    max-height: 300px; /* Limita a altura do gráfico em telas menores */
+  }
+
+  p {
+    font-size: 12px; /* Mais ajuste de tamanho de fonte para telas muito pequenas */
+  }
+}
+
+p {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
