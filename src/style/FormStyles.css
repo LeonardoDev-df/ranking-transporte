@@ -1,0 +1,98 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    
+  }
+  
+  /* Estilos para o container principal do formulário */
+  .evaluation-form-container {
+   
+    background-color: white;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Cabeçalho do formulário */
+  .form-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .form-header p {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos do corpo do formulário */
+  .form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Estilo para os campos do formulário */
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .form-field label {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .form-field input,
+  .form-field select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fafafa;
+  }
+  
+  /* Botão de envio */
+  .submit-button {
+    display: block;
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    justify-items: center;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Ajuste responsivo */
+  @media (max-width: 768px) {
+    .evaluation-form-container {
+      padding: 15px;
+    }
+  
+    .form-header h1 {
+      font-size: 2rem;
+    }
+  
+    .form-header p {
+      font-size: 1rem;
+    }
+  
+    .submit-button {
+      font-size: 1rem;
+    }
+  }
+  

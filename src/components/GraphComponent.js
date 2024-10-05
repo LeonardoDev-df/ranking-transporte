@@ -33,12 +33,12 @@ const GraphComponent = () => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, 'avaliacoes'));
       const empresas = {
-        Piracicabana: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
-        Pioneira: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
-        Urbi: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
         Marechal: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
+        Pioneira: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
+        Piracicabana: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
         'Pioneira/BRT': { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
         'São José': { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },
+        Urbi: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, count: 0 },   
       };
 
       querySnapshot.forEach((doc) => {

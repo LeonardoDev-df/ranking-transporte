@@ -161,6 +161,14 @@
     display: flex;
     flex-direction: column; /* Faz com que label e input fiquem empilhados */
     margin-bottom: 1rem; /* Margem inferior */
+    width: 70%;
+  }
+
+  .form-idade {
+    display: flex;
+    flex-direction: column; /* Faz com que label e input fiquem empilhados */
+    margin-bottom: 1rem; /* Margem inferior */
+    width: 20%;
   }
   
   .form-field label {
@@ -169,6 +177,7 @@
   }
   
   .form-field input,
+  .form-idade input,
   .form-field select {
     padding: 0.5rem; /* Espaçamento interno */
     border: 1px solid #ccc; /* Borda padrão */
@@ -178,6 +187,7 @@
   }
   
   .form-field input:focus,
+  .form-idade input:focus,
   .form-field select:focus {
     border-color: #007bff; /* Cor da borda ao focar */
     outline: none; /* Remove o contorno padrão */
@@ -186,8 +196,33 @@
   .form-field select {
     background-color: #f9f9f9; /* Fundo padrão para select */
   }
+
+  .button-enviar{
+    display: flex;
+    justify-content: center;
+  }
+
+  .fielde{
+    display: flex;
+    flex-direction: row;
+  }
   
+  .roles-container{
+
+    text-align: center;
+  }
   
+  /* Para navegadores baseados em WebKit (Chrome, Safari) */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Para Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
   
   /* Estilo responsivo */
   @media (max-width: 768px) {

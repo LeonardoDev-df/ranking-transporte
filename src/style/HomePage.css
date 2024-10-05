@@ -1,102 +1,172 @@
-/* src/style/HomePage.css */
+/* Definindo a paleta de cores */
+:root {
+  --primary-color: #003366; /* Azul escuro */
+  --secondary-color: #FFD700; /* Amarelo ouro */
+  --background-color: #F0F0F0; /* Cinza claro */
+  --text-color: #333333; /* Cinza escuro para o texto */
+  --button-color: #FFD700; /* Cor do botão */
+  --button-hover-color: #FFC300; /* Cor do botão ao passar o mouse */
+}
+
 .home-layout {
-    display: flex;
-    min-height: 100vh;
-    /*padding: 20px;*/
-  }
-  
-  .home-aside {
-    width: 250px;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border-right: 1px solid #ddd;
-  }
-  
-  .home-aside h2 {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-    padding-top: 25px;
-  }
-  
-  .home-content {
-    flex-grow: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .home-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--background-color); /* Cor de fundo */
+}
+
+.home-aside {
+  width: 25%;
+  padding: 10px;
+  background-color: var(--primary-color); /* Cor de fundo primária */
+  border-right: 1px solid var(--secondary-color); /* Borda amarela */
+  color: var(--secondary-color); /* Cor do texto */
+}
+
+.home-aside h2 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: var(--secondary-color); /* Texto em amarelo */
+  text-align: center;
+  padding-top: 25px;
+}
+
+.home-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color); /* Cor do texto */
+}
+
+.home-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: var(--primary-color); /* Título em azul escuro */
+  text-align: center;
+}
+
+.button-container {
+  display: flex; /* Habilita o flexbox */
+  flex-direction: column;
+  justify-content: flex-end; /* Alinha os itens no início */
+  gap: 0px; /* Espaçamento entre os botões (ajuste conforme necessário) */
+  margin-top: 20px; /* Espaçamento superior, se necessário */
+  align-items: flex-end;
+}
+
+.aside-button,
+.home-button {
+  /* Adicione estilos comuns para os botões, se necessário */
+ justify-content: flex-end;
+}
+
+
 /* Estilo para o botão Ver Gráfico */
 .aside-button {
-    background: none; /* Remove o fundo */
-    border: none; /* Remove a borda */
-    color: #007bff; /* Cor do link */
-    cursor: pointer; /* Cursor de link */
-    text-decoration: none; /* Aparece como um link */
-    font-size: 1rem; /* Tamanho do texto */
-    margin-left: 60px; /* Espaço à esquerda */
-    padding: 0; /* Remove o padding */
-    padding-bottom: 10px;
-    transition: color 0.3s ease; /* Transição suave para a cor */
-  }
-  
-  /* Estilo para o botão Responder Avaliação */
-  .home-button {
-    background: none; /* Remove o fundo */
-    border: none; /* Remove a borda */
-    color: #007bff; /* Cor do link */
-    cursor: pointer; /* Cursor de link */
-    text-decoration: none; /* Aparece como um link */
-    font-size: 1rem; /* Tamanho do texto */
-    margin-left: 60px; /* Espaço à esquerda */
-    padding: 0; /* Remove o padding */
-    padding-bottom: 10px;
-    transition: color 0.3s ease; /* Transição suave para a cor */
-  }
-  
-  /* Estilo do hover (ao passar o mouse) */
+  background-color: var(--button-color); /* Fundo do botão amarelo */
+  border: none;
+  color: var(--primary-color); /* Texto em azul escuro */
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 15px 0;
+  padding: 10px 10px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px; /* Botões arredondados */
+  justify-content: ;
+}
+
+/* Estilo para o botão Responder Avaliação */
+.home-button {
+  background-color: var(--button-color); /* Fundo do botão amarelo */
+  border: none;
+  color: var(--primary-color); /* Texto em azul escuro */
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 15px 0;
+  padding: 10px 10px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px; /* Botões arredondados */
+}
+
+/* Estilo do hover (ao passar o mouse) */
 .aside-button:hover,
 .home-button:hover {
-  color: #0056b3; /* Muda para um tom mais escuro de azul */
-  text-decoration: none; /* Remove o sublinhado no hover */
+  background-color: var(--button-hover-color); /* Tom mais escuro de amarelo */
+  color: var(--text-color); /* Cor do texto muda para cinza escuro */
 }
 
 /* Remove a estilização padrão dos links */
 .link-button {
   text-decoration: none;
+  font-size: 1rem;
 }
-  
-  @media (max-width: 768px) {
-    .home-layout {
-      flex-direction: column;
-    }
-  
-    .home-aside {
-      width: 100%;
-      margin-bottom: 20px;
-      border-right: none;
-    }
-  
-    .home-title {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-  
-    .home-button {
-      font-size: 0.9rem;
-      padding: 10px 16px;
-    }
-  
-    .home-content {
-      padding: 10px;
-    }
+
+.motivational-text {
+  font-size: 1.2rem;
+  color: var(--text-color); /* Cor de texto definida em sua paleta */
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.6; /* Espaçamento para melhorar a leitura */
+  background-color: var(--secondary-color); /* Fundo amarelo ouro */
+  padding: 15px 20px;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 70%;
+  margin-top: 50px;
+}
+
+.motivational-text strong {
+  color: var(--primary-color); /* Destaque em azul escuro */
+}
+
+
+.image-container {
+  display: flex;
+  justify-content: center; /* Centraliza as imagens */
+  margin: 20px 0; /* Espaçamento acima e abaixo */
+}
+
+.motivational-image {
+  width: 100%; /* Faz as imagens ocuparem 100% do espaço disponível */
+  max-width: 400px; /* Limita a largura máxima das imagens */
+  margin: 0 10px; /* Espaçamento entre as imagens */
+  border-radius: 10px; /* Bordas arredondadas para as imagens */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .home-layout {
+    flex-direction: column;
   }
-  
+
+  .home-aside {
+    width: 100%;
+    margin-bottom: 20px;
+    border-right: none;
+  }
+
+  .home-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .home-button,
+  .aside-button {
+    font-size: 1rem;
+    padding: 10px 16px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .home-content {
+    padding: 10px;
+  }
+}
