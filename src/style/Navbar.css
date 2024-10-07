@@ -1,0 +1,16 @@
+.navbar-brand-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-bus {
+    margin-right: 10px; /* Ajuste o valor conforme necessário para o espaçamento */
+    font-size: 18px; /* Ajuste o tamanho do ícone */
+  }
+  
+  .navbar-brand {
+    font-size: 0.8rem; /* Aumente ou diminua para ajustar o tamanho do título */
+    font-weight: bold; /* Para deixar o título mais destacado */
+    color: #333; /* Pode personalizar a cor do título */
+  }
+  
