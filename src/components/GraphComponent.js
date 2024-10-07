@@ -3,6 +3,7 @@ import { Bar } from 'react-chartjs-2';
 import { db } from '../data/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 import '../style/GraphComponent.css'; // Importando o arquivo de estilo
+import '../style/styles.css'; 
 
 // Importações necessárias do Chart.js
 import {
@@ -147,13 +148,18 @@ const GraphComponent = () => {
   }), []); // `useMemo` para memorizar as opções e evitar re-renderizações desnecessárias
 
   return (
-    <div className="graph-container">
-      {chartData ? (
-        <Bar data={chartData} options={options} />
-      ) : (
-        <p>Carregando dados...</p>
-      )}
-    </div>
+    <section className="page-section portfolio" id="graph">
+      <div className="container">
+
+        <div className="graph-container">
+          {chartData ? (
+            <Bar data={chartData} options={options} />
+          ) : (
+            <p>Carregando dados...</p>
+          )}
+        </div>
+      </div>
+    </section>
   );
 };
 

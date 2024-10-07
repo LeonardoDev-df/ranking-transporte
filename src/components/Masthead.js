@@ -1,6 +1,7 @@
 import React from "react";
 import dogImage from "../images/cachorro-adulto.jpg"; // Ajuste o caminho da imagem
 import '../style/styles.css'; // Importando o arquivo de estilo
+import rodoviariaImage from '../images/rodoviaria.jpg';
 const Masthead = () => {
   return (
     <header className="masthead bg-primary text-white text-center">

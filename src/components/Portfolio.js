@@ -3,8 +3,6 @@ import dogImage from "../images/cachorro-adulto.jpg";
 import crocImage from "../images/croco.jpg";
 import Modal from "./Modal";
 import '../style/styles.css'; 
-
-
 const Portfolio = () => {
   return (
     <section className="page-section portfolio" id="about">
@@ -36,5 +34,4 @@ const Portfolio = () => {
     </section>
   );
 };
-
 export default Portfolio;

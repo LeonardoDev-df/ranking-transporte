@@ -3,7 +3,6 @@ import { db } from '../data/firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 import '../style/FormComponent.css'; // Importando o arquivo de estilo
 import { useNavigate } from 'react-router-dom'; // Importando useNavigate
-
 const FormComponent = () => {
   const navigate = useNavigate(); // Criando uma instância do useNavigate
   const [email, setEmail] = useState('');
@@ -65,7 +64,6 @@ const FormComponent = () => {
       },
     }));
   };
-
   const handleTermsAcceptance = () => {
     setAcceptedTerms(true);
     setShowForm(true); // Mostra o formulário após aceitar os termos
@@ -134,8 +132,6 @@ const FormComponent = () => {
                   required
                 />
               </div>
-
-
               <div className="form-field">
                 <label>Cidade onde mora:</label>
                 <select
@@ -206,9 +202,6 @@ const FormComponent = () => {
     </div>
   ))}
 </div>
-
-
-
           <div className="button-enviar">
             <button type="submit" className="submit-button">Enviar Avaliação</button>
           </div>
@@ -217,5 +210,4 @@ const FormComponent = () => {
     </form>
   );
 };
-
 export default FormComponent;
