@@ -2,10 +2,9 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { db } from '../data/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
-import '../style/GraphComponent.css'; // Importando o arquivo de estilo
+import '../style/GraphComponent.css'; 
 import '../style/styles.css'; 
 
-// Importações necessárias do Chart.js
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,6 +27,7 @@ ChartJS.register(
 
 const GraphComponent = () => {
   const [chartData, setChartData] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,9 +42,8 @@ const GraphComponent = () => {
       };
 
       querySnapshot.forEach((doc) => {
-        const data = doc.data().ratings; // Supondo que os dados são armazenados sob 'ratings'
+        const data = doc.data().ratings; 
 
-        // Adiciona os dados das avaliações
         for (const [empresa, avaliacoes] of Object.entries(data)) {
           if (empresas[empresa]) {
             empresas[empresa].design += parseInt(avaliacoes.design || 0);
@@ -62,10 +61,9 @@ const GraphComponent = () => {
         }
       });
 
-      // Calcula as médias para cada empresa
       const chartData = {
         labels: Object.keys(empresas),
-        datasets: [
+         datasets: [
           {
             label: 'Média de Design',
             data: Object.values(empresas).map(e => e.design / (e.count || 1)),
@@ -123,10 +121,22 @@ const GraphComponent = () => {
     };
 
     fetchData();
+
+    // Verificar o redimensionamento da janela
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const options = useMemo(() => ({
     responsive: true,
+    indexAxis: isMobile ? 'y' : 'x', // Troca para vertical em dispositivos móveis
     plugins: {
       legend: {
         position: 'top',
@@ -136,21 +146,21 @@ const GraphComponent = () => {
         text: 'Ranking das Empresas de Transporte - Brasília/DF',
       },
     },
-    animation: false, // Desativa animações
+    animation: false, 
     scales: {
       x: {
-        type: 'category',
+        type: isMobile ? 'linear' : 'category', // Ajusta o tipo de eixo baseado no layout
+        beginAtZero: true,
       },
       y: {
         beginAtZero: true,
       },
     },
-  }), []); // `useMemo` para memorizar as opções e evitar re-renderizações desnecessárias
+  }), [isMobile]);
 
   return (
     <section className="page-section portfolio" id="graph">
       <div className="container">
-
         <div className="graph-container">
           {chartData ? (
             <Bar data={chartData} options={options} />

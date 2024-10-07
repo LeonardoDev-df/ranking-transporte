@@ -12,10 +12,10 @@ const Footer = () => {
             </div>
             <div className="col-lg-4 mb-5 mb-lg-0">
               <h4 className="text-uppercase mb-4">Informações de Contato</h4>
-              <a className="btn btn-outline-light btn-social mx-1" href="https://github.com/LeonardoDev-df">
+              <a className="btn btn-outline-light btn-social mx-1" href="">
                 <i className="fab fa-github fa-2x"></i>
               </a>
-              <a className="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/leonardo-lopes-borges/">
+              <a className="btn btn-outline-light btn-social mx-1" href="">
                 <i className="fab fa-fw fa-linkedin-in"></i>
               </a>
             </div>

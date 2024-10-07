@@ -1,12 +1,21 @@
 import React from "react";
 import dogImage from "../images/cachorro-adulto.jpg"; // Ajuste o caminho da imagem
 import '../style/styles.css'; // Importando o arquivo de estilo
-import rodoviariaImage from '../images/rodoviaria.jpg';
+import rodoviariaImage from '../images/validador.webp';
 const Masthead = () => {
   return (
     <header className="masthead bg-primary text-white text-center">
       <div className="container d-flex align-items-center flex-column">
-        <img className="masthead-avatar mb-5" src={dogImage} alt="dog" />
+      <img 
+          className="masthead-avatar mb-5" 
+          src={rodoviariaImage} 
+          style={{ borderRadius: '10px', display: 'block', margin: '0 auto' }} 
+          alt="dog" 
+        />
+        <p style={{ textAlign: 'center', marginTop: '-40px', fontSize: '8px', color: '#555' }}>
+          Foto/Imagem: Paulo H. Carvalho/Agência Brasília
+        </p>
+
         <h1 className="masthead-heading">TransporteTop DF</h1>
         <div className="divider-custom divider-light">
           <div className="divider-custom-line"></div>

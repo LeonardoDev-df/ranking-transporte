@@ -6,6 +6,8 @@ import '../style/Navbar.css';
 import GraphComponent from './GraphComponent'; // Importando o componente do gráfico
 import { Link } from 'react-router-dom';
 
+
+
 const Navbar = () => {
   const [showGraph, setShowGraph] = useState(false); // Estado para controlar a exibição do gráfico
 
@@ -77,7 +79,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {showGraph && <GraphComponent />} {/* Renderiza o gráfico condicionalmente */}
+    
     </>
   );
 };

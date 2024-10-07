@@ -13,7 +13,7 @@
 canvas {
   width: 100% !important;
   height: auto !important;
-  max-height: 500px; /* Defina uma altura máxima para evitar que o gráfico se estenda demais */
+  max-height: 500px; /* Limita a altura para evitar gráficos grandes demais */
 }
 
 /* Ajustes para telas menores */
@@ -23,19 +23,27 @@ canvas {
     width: 100%; /* Ajusta a largura para caber melhor em dispositivos móveis */
   }
 
+  canvas {
+    max-height: 400px; /* Ajusta a altura máxima para tablets */
+  }
+
   p {
     font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
   }
 }
 
-/* Ajuste adicional para telas muito pequenas */
+/* Ajustes adicionais para telas muito pequenas */
 @media (max-width: 480px) {
+  .graph-container {
+    padding: 8px; /* Reduz o padding para telas menores */
+  }
+
   canvas {
-    max-height: 300px; /* Limita a altura do gráfico em telas menores */
+    max-height: 300px; /* Limita a altura do gráfico em telas pequenas */
   }
 
   p {
-    font-size: 12px; /* Mais ajuste de tamanho de fonte para telas muito pequenas */
+    font-size: 12px; /* Ajuste o tamanho da fonte para telas muito pequenas */
   }
 }
 
