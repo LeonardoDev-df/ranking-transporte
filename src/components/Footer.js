@@ -1,5 +1,5 @@
 import React from "react";
-import dogFooterImage from "../images/cachorro-adulto.jpg";
+import PoliticaFooter from "../images/Politica.webp";
 import '../style/styles.css'; // Importando o arquivo de estilo
 const Footer = () => {
   return (
@@ -8,16 +8,15 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-4 mb-5 mb-lg-0">
-              <img className="img-fluid mb-4" src={dogFooterImage} alt="Imagem de um cachorro" />
+              <img className="img-fluid mb-4" src={PoliticaFooter} alt="Imagem de cartões" />
             </div>
             <div className="col-lg-4 mb-5 mb-lg-0">
               <h4 className="text-uppercase mb-4">Informações de Contato</h4>
-              <a className="btn btn-outline-light btn-social mx-1" href="">
-                <i className="fab fa-github fa-2x"></i>
+              <a className="btn btn-outline-light btn-social mx-1" href="mailto:leonardolopesborges@hotmail.com">
+                <i className="fas fa-envelope fa-2x"></i>
               </a>
-              <a className="btn btn-outline-light btn-social mx-1" href="">
-                <i className="fab fa-fw fa-linkedin-in"></i>
-              </a>
+
+             
             </div>
           </div>
         </div>

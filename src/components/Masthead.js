@@ -12,7 +12,7 @@ const Masthead = () => {
           style={{ borderRadius: '10px', display: 'block', margin: '0 auto' }} 
           alt="dog" 
         />
-        <p style={{ textAlign: 'center', marginTop: '-40px', fontSize: '8px', color: '#555' }}>
+        <p style={{ textAlign: 'center', marginTop: '-45px', fontSize: '8px', color: '#555' }}>
           Foto/Imagem: Paulo H. Carvalho/Agência Brasília
         </p>
 
