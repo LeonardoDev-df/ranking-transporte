@@ -27,11 +27,14 @@ ChartJS.register(
 
 const GraphComponent = () => {
   const [chartData, setChartData] = useState(null);
+  const [totalAvaliacoes, setTotalAvaliacoes] = useState(0); // Estado para armazenar o número total de avaliações
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, 'avaliacoes'));
+      let totalAvaliacoesCount = querySnapshot.size; // Conta o número de documentos na coleção
+
       const empresas = {
         Marechal: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, pontualidade: 0, limpeza: 0, conforto: 0, custo: 0, atendimento: 0, count: 0 },
         Pioneira: { design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, pontualidade: 0, limpeza: 0, conforto: 0, custo: 0, atendimento: 0, count: 0 },
@@ -118,6 +121,7 @@ const GraphComponent = () => {
       };
 
       setChartData(chartData);
+      setTotalAvaliacoes(totalAvaliacoesCount); // Define o total de avaliações
     };
 
     fetchData();
@@ -161,7 +165,9 @@ const GraphComponent = () => {
   return (
     <section className="page-section portfolio" id="graph">
       <div className="container">
+      <span>Total de Avaliações: {totalAvaliacoes}</span> {/* Mostra o número total de avaliações */}
         <div className="graph-container">
+        
           {chartData ? (
             <Bar data={chartData} options={options} />
           ) : (
@@ -169,6 +175,7 @@ const GraphComponent = () => {
           )}
         </div>
       </div>
+    
     </section>
   );
 };

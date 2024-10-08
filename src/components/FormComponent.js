@@ -4,7 +4,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import '../style/FormComponent.css'; // Importando o arquivo de estilo
 import { useNavigate } from 'react-router-dom'; // Importando useNavigate
 import CitySelect from './CitySelect'; // Importando o novo componente
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importando Bootstrap
+
 
 const FormComponent = () => {
   const navigate = useNavigate(); // Criando uma instância do useNavigate
@@ -117,11 +117,11 @@ const FormComponent = () => {
                 />
               </div>
 
-              <div className="col-md-6">
+              <div className="col-md-5">
                 <label>Idade:</label>
                 <input
                   type="number"
-                  className="form-control"
+                  className="form-controle"
                   value={age}
                   onChange={(e) => {
                     let value = parseInt(e.target.value);
@@ -142,9 +142,15 @@ const FormComponent = () => {
             </div>
 
             <div className="row mb-3">
-              <div className="col-md-6">
-                <label>Cidade onde mora:</label>
+              <div className="col-md-5">
+                
                 <CitySelect city={city} setCity={setCity} />
+              </div>
+              <div className="col-md-6">              
+                <div className="roles-container">
+                  <h2>Regras de Funcionamento</h2>
+                  <p>Por favor, forneça uma avaliação de 0 a 10 para cada item abaixo:</p>
+                </div>
               </div>
             </div>
 
