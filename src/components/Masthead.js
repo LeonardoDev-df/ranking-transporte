@@ -34,9 +34,7 @@ const Masthead = () => {
           **E o melhor:** não leva nem 5 minutos para responder! Basta clicar no botão e deixar sua avaliação. Sua voz importa e juntos podemos fazer um transporte público que funcione para todos. 
           <strong> Avalie agora e faça parte da mudança!</strong>
         </p>
-        <p className="masthead-subheading font-weight-light mb-0">
-          Explore animais em 3D: acesse o sistema, clique em “Iniciar realidade aumentada”, aponte a câmera para os marcadores e descubra mais sobre essas criaturas fascinantes.
-        </p>
+        
       </div>
     </header>
   );
