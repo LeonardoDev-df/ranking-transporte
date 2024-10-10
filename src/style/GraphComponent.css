@@ -8,12 +8,18 @@
   width: 90%;
   max-width: 1200px;
   padding-top: 0px;
+  background-color: #f9f9f9; /* Fundo leve para destacar o gráfico */
+  border-radius: 10px; /* Bordas arredondadas para suavizar o visual */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para dar profundidade */
 }
 
 canvas {
   width: 100% !important;
   height: auto !important;
-  max-height: 500px; /* Limita a altura para evitar gráficos grandes demais */
+  max-height: 550px; /* Aumenta a altura máxima do gráfico */
+  border-radius: 8px; /* Bordas arredondadas no gráfico */
+  background-color: #fff; /* Fundo branco no gráfico */
+  padding: 20px; /* Adiciona espaçamento interno ao gráfico */
 }
 
 /* Ajustes para telas menores */
@@ -21,10 +27,11 @@ canvas {
   .graph-container {
     padding: 10px;
     width: 100%; /* Ajusta a largura para caber melhor em dispositivos móveis */
+    max-width: 100%; /* Garante que a largura ocupe o espaço completo */
   }
 
   canvas {
-    max-height: 400px; /* Ajusta a altura máxima para tablets */
+    max-height: 450px; /* Ajusta a altura máxima para tablets */
   }
 
   p {
@@ -32,23 +39,33 @@ canvas {
   }
 }
 
-/* Ajustes adicionais para telas muito pequenas */
-@media (max-width: 480px) {
+/* Ajustes adicionais para telas muito pequenas (menos de 450px de largura e 736px de altura) */
+@media (max-width: 450px) and (max-height: 736px) {
   .graph-container {
     padding: 8px; /* Reduz o padding para telas menores */
+    width: 100%; /* Certifica-se de que o gráfico ocupe toda a largura disponível */
   }
 
   canvas {
-    max-height: 300px; /* Limita a altura do gráfico em telas pequenas */
+    max-height: 350px; /* Limita a altura do gráfico em telas muito pequenas */
   }
 
   p {
-    font-size: 12px; /* Ajuste o tamanho da fonte para telas muito pequenas */
+    font-size: 10px; /* Ajusta o tamanho da fonte para telas muito pequenas */
   }
 }
 
 p {
-  font-size: 16px;
+  font-size: 10px;
   color: #333;
   text-align: center;
+  margin-top: 10px;
+}
+
+span {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: center;
+  display: block; /* Garante que o texto ocupe uma linha completa */
 }
