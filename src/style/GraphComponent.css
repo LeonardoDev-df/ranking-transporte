@@ -19,7 +19,7 @@ canvas {
   max-height: 550px; /* Aumenta a altura máxima do gráfico */
   border-radius: 8px; /* Bordas arredondadas no gráfico */
   background-color: #fff; /* Fundo branco no gráfico */
-  padding: 20px; /* Adiciona espaçamento interno ao gráfico */
+  padding: 10px; /* Adiciona espaçamento interno ao gráfico */
 }
 
 /* Ajustes para telas menores */
@@ -42,7 +42,7 @@ canvas {
 /* Ajustes adicionais para telas muito pequenas (menos de 450px de largura e 736px de altura) */
 @media (max-width: 450px) and (max-height: 736px) {
   .graph-container {
-    padding: 8px; /* Reduz o padding para telas menores */
+    padding: 0px; /* Reduz o padding para telas menores */
     width: 100%; /* Certifica-se de que o gráfico ocupe toda a largura disponível */
   }
 

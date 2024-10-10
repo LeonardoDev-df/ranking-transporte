@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { db } from '../data/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
-import { Carousel } from 'react-bootstrap'; // Importando o carrossel do react-bootstrap
+import { Carousel } from 'react-bootstrap';
 import '../style/GraphComponent.css';
 import '../style/styles.css';
 
@@ -16,15 +16,14 @@ import {
   Legend,
 } from 'chart.js';
 
-// Registrar os componentes do Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const GraphComponent = () => {
   const [chartData, setChartData] = useState(null);
   const [itemData, setItemData] = useState(null);
-  const [totalAvaliacoes, setTotalAvaliacoes] = useState(0);
+  const [totalAvaliacoes, setTotalAvaliacoes] = useState('');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [index, setIndex] = useState(0); // Estado para controlar o carrossel
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +43,6 @@ const GraphComponent = () => {
 
         for (const [empresa, avaliacoes] of Object.entries(data)) {
           if (empresas[empresa]) {
-            // Calcula o total de pontos acumulados para cada critério
             const totalEmpresa = Object.values(avaliacoes).reduce((acc, val) => acc + parseInt(val || 0), 0);
             empresas[empresa].totalPontos += totalEmpresa;
             empresas[empresa].totalAvaliacoes++;
@@ -59,53 +57,134 @@ const GraphComponent = () => {
             empresas[empresa].custo += parseInt(avaliacoes.custo || 0);
             empresas[empresa].atendimento += parseInt(avaliacoes.atendimento || 0);
             empresas[empresa].count++;
-
           }
         }
-
-
       });
 
-      // Calcula a média de pontos por empresa
       const empresasOrdenadas = Object.keys(empresas)
         .map((key) => ({
           empresa: key,
           media: empresas[key].totalAvaliacoes > 0 ? (empresas[key].totalPontos / empresas[key].totalAvaliacoes) : 0,
         }))
-        .sort((a, b) => b.media - a.media); // Ordena da maior média para a menor
+        .sort((a, b) => b.media - a.media);
 
-      const chartData = {
-        labels: empresasOrdenadas.map((e) => e.empresa),
-        datasets: [
-          {
-            label: `Número de Avaliações ` + totalAvaliacoes,
-            data: empresasOrdenadas.map((e) => e.media.toFixed(2)), // Formata para 2 casas decimais
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          },
-        ],
-      };
-
-
+        const chartData = {
+          labels: empresasOrdenadas.map((e) => e.empresa),
+          datasets: [
+            {
+              data: empresasOrdenadas.map((e) => parseFloat(e.media)),
+              backgroundColor: [
+                'rgba(0, 128, 0, 0.6)',     // Verde para Piracicabana               
+                'rgba(255, 255, 0, 0.6)',   // Amarelo para Pioneira
+                'rgba(144, 238, 144, 0.6)', // Verde Claro para São José/BsBus                               
+                'rgba(0, 0, 255, 0.6)',     // Azul para Urbi
+                'rgba(255, 255, 0, 0.6)',   // Amarelo para Pioneira/BRT
+                'rgba(255, 165, 0, 0.6)',  // Laranja para Marechal
+              ],
+            },
+          ],
+        };
 
       const itemData = {
         labels: ['Design', 'Ergonomia', 'Ventilação', 'Assento', 'Iluminação', 'Pontualidade', 'Limpeza', 'Conforto', 'Custo', 'Atendimento'],
-        datasets: Object.keys(empresas).map((key, idx) => ({
-          label: key,
-          data: [
-            empresas[key].design,
-            empresas[key].ergonomia,
-            empresas[key].ventilacao,
-            empresas[key].assento,
-            empresas[key].iluminacao,
-            empresas[key].pontualidade,
-            empresas[key].limpeza,
-            empresas[key].conforto,
-            empresas[key].custo,
-            empresas[key].atendimento,
-            // Aqui você pode ajustar para outras métricas se desejar
-          ],
-          backgroundColor: `rgba(${75 + idx * 30}, ${192 - idx * 10}, ${192 - idx * 20}, 0.6)`,
-        })),
+        datasets: [
+          {
+            label: 'Marechal',
+            data: [
+              empresas['Marechal'].design,
+              empresas['Marechal'].ergonomia,
+              empresas['Marechal'].ventilacao,
+              empresas['Marechal'].assento,
+              empresas['Marechal'].iluminacao,
+              empresas['Marechal'].pontualidade,
+              empresas['Marechal'].limpeza,
+              empresas['Marechal'].conforto,
+              empresas['Marechal'].custo,
+              empresas['Marechal'].atendimento,
+            ],
+            backgroundColor: 'rgba(255, 165, 0, 0.6)', // Laranja para Marechal
+          },
+          {
+            label: 'Pioneira',
+            data: [
+              empresas['Pioneira'].design,
+              empresas['Pioneira'].ergonomia,
+              empresas['Pioneira'].ventilacao,
+              empresas['Pioneira'].assento,
+              empresas['Pioneira'].iluminacao,
+              empresas['Pioneira'].pontualidade,
+              empresas['Pioneira'].limpeza,
+              empresas['Pioneira'].conforto,
+              empresas['Pioneira'].custo,
+              empresas['Pioneira'].atendimento,
+            ],
+            backgroundColor: 'rgba(255, 255, 0, 0.6)', // Amarelo para Pioneira
+          },
+          {
+            label: 'Pioneira/BRT',
+            data: [
+              empresas['Pioneira/BRT'].design,
+              empresas['Pioneira/BRT'].ergonomia,
+              empresas['Pioneira/BRT'].ventilacao,
+              empresas['Pioneira/BRT'].assento,
+              empresas['Pioneira/BRT'].iluminacao,
+              empresas['Pioneira/BRT'].pontualidade,
+              empresas['Pioneira/BRT'].limpeza,
+              empresas['Pioneira/BRT'].conforto,
+              empresas['Pioneira/BRT'].custo,
+              empresas['Pioneira/BRT'].atendimento,
+            ],
+            backgroundColor: 'rgba(255, 255, 0, 0.6)', // Amarelo para Pioneira/BRT
+          },
+          {
+            label: 'Piracicabana',
+            data: [
+              empresas['Piracicabana'].design,
+              empresas['Piracicabana'].ergonomia,
+              empresas['Piracicabana'].ventilacao,
+              empresas['Piracicabana'].assento,
+              empresas['Piracicabana'].iluminacao,
+              empresas['Piracicabana'].pontualidade,
+              empresas['Piracicabana'].limpeza,
+              empresas['Piracicabana'].conforto,
+              empresas['Piracicabana'].custo,
+              empresas['Piracicabana'].atendimento,
+            ],
+            backgroundColor: 'rgba(0, 128, 0, 0.6)', // Verde para Piracicabana
+          },
+          {
+            label: 'São José/BsBus',
+            data: [
+              empresas['São José/BsBus'].design,
+              empresas['São José/BsBus'].ergonomia,
+              empresas['São José/BsBus'].ventilacao,
+              empresas['São José/BsBus'].assento,
+              empresas['São José/BsBus'].iluminacao,
+              empresas['São José/BsBus'].pontualidade,
+              empresas['São José/BsBus'].limpeza,
+              empresas['São José/BsBus'].conforto,
+              empresas['São José/BsBus'].custo,
+              empresas['São José/BsBus'].atendimento,
+            ],
+            backgroundColor: 'rgba(144, 238, 144, 0.6)', // Verde Claro para São José/BsBus
+          },
+          {
+            label: 'Urbi',
+            data: [
+              empresas['Urbi'].design,
+              empresas['Urbi'].ergonomia,
+              empresas['Urbi'].ventilacao,
+              empresas['Urbi'].assento,
+              empresas['Urbi'].iluminacao,
+              empresas['Urbi'].pontualidade,
+              empresas['Urbi'].limpeza,
+              empresas['Urbi'].conforto,
+              empresas['Urbi'].custo,
+              empresas['Urbi'].atendimento,
+            ],
+            backgroundColor: 'rgba(0, 0, 255, 0.6)', // Azul para Urbi
+          },
+        ],
       };
 
       setChartData(chartData);
@@ -114,64 +193,71 @@ const GraphComponent = () => {
     };
 
     fetchData();
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
-
-  const options = useMemo(
-    () => ({
-      responsive: true,
-      indexAxis: isMobile ? 'y' : 'x',
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Ranking das Empresas de Transporte - Brasília/DF',
-        },
-      },
-      scales: {
-        x: {
-          beginAtZero: true,
-        },
-        y: {
-          beginAtZero: true,
-        },
-      },
-    }),
-    [isMobile]
-  );
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
 
+  const chartOptions = useMemo(() => ({
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 60,
+        ticks: {
+          stepSize: 1,
+          callback: (value) => value.toFixed(1),
+        },
+      },
+    },
+    plugins: {
+      legend: { position: 'bottom' },
+      title: { display: true, text: 'Ranking Geral de Empresas de Transporte' },
+    },
+  }), []);
+
+  const itemOptions = useMemo(() => ({
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 60,
+        ticks: {
+          stepSize: 1,
+          callback: (value) => value.toFixed(1),
+        },
+      },
+    },
+    plugins: {
+      legend: { position: 'bottom' },
+      title: { display: true, text: 'Avaliações por Critério' },
+    },
+  }), []);
+
   return (
     <section className="page-section portfolio" id="graph">
       <div className="container">
-        <Carousel activeIndex={index} onSelect={handleSelect} controls indicators interval={null} >
-          <Carousel.Item>
-            <div className="graph-container">
-              {chartData ? <Bar data={chartData} options={options} /> : <p>Carregando dados...</p>}
-            </div>
-          </Carousel.Item>
 
-          <Carousel.Item>
-            <div className="graph-container">
-              {itemData ? <Bar data={itemData} options={options} /> : <p>Carregando dados...</p>}
-            </div>
-          </Carousel.Item>
-        </Carousel>
+      <div className="graph-container">
+       
+        {chartData && <div className="chart-wrapper"><Bar data={chartData} options={chartOptions} /></div>}
+        {itemData && (
+          <Carousel activeIndex={index} onSelect={handleSelect} interval={null} className="carousel-custom">
+            {itemData.datasets.map((dataset, idx) => (
+              <Carousel.Item key={idx}>
+                <div className="carousel-inner">
+                  <h3>{dataset.label}</h3>
+                  <Bar data={{ labels: itemData.labels, datasets: [dataset] }} options={itemOptions} />
+                </div>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        )}
       </div>
+    </div>
     </section>
   );
 };
