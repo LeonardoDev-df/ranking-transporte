@@ -16,7 +16,7 @@ const HomePage = () => {
       <Navbar />
       <Masthead />
       <GraphComponent />
-     <div> <p> hellow !!! </p> </div>
+     
       <Footer />
 
     </>
