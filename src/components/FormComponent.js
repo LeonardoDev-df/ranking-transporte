@@ -83,13 +83,31 @@ const FormComponent = () => {
               <p className="terms-text">
                 Ao fornecer seus dados, você consente que nós utilizemos as informações fornecidas para os seguintes fins:
                 <ul>
-                  <li>Melhorar a qualidade do transporte público.</li>
-                  <li>Realizar pesquisas e estudos sobre os serviços.</li>
-                  <li>Entrar em contato para feedback sobre as avaliações.</li>
+                  <li>Melhorar a qualidade do transporte público, identificando problemas e oportunidades de aprimoramento nos serviços prestados.</li>
+                  <li>Realizar pesquisas e estudos sobre os serviços de transporte, com o objetivo de gerar relatórios e análises que possam influenciar melhorias.</li>
+                  <li>Entrar em contato para coletar feedback sobre as avaliações e oferecer suporte em relação à sua experiência com o transporte público.</li>
+                  <li>Utilizar seus dados de forma anônima para análises estatísticas e geração de relatórios que não identifiquem diretamente nenhum indivíduo.</li>
+                  <li>Compartilhar as informações, de maneira anonimizada, com órgãos reguladores e parceiros envolvidos na melhoria dos serviços de transporte.</li>
                 </ul>
-                Você tem o direito de solicitar a exclusão de seus dados a qualquer momento. Ao marcar a opção abaixo, você aceita os termos de uso dos seus dados pessoais.
+                <br />
+                <strong>Seus Direitos:</strong>
+                <ul>
+                  <li>Você tem o direito de acessar, corrigir ou atualizar os seus dados pessoais a qualquer momento.</li>
+                  <li>Você pode solicitar a exclusão dos seus dados do nosso sistema a qualquer momento, sem justificativa, entrando em contato através do nosso canal de atendimento.</li>
+                  <li>Você tem o direito de retirar seu consentimento para o tratamento dos dados a qualquer momento, o que não afetará a legalidade do processamento baseado no consentimento antes de sua retirada.</li>
+                  <li>Você pode solicitar informações detalhadas sobre como seus dados estão sendo tratados, com quem eles são compartilhados e as finalidades específicas do uso.</li>
+                </ul>
+                <br />
+                <strong>Segurança dos Dados:</strong>
+                <ul>
+                  <li>Seus dados serão tratados de forma confidencial e armazenados em servidores seguros com acesso restrito.</li>
+                  <li>Implementamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acessos não autorizados, perda acidental, destruição ou dano.</li>
+                </ul>
+                <br />
+                Ao marcar a opção abaixo, você concorda com o uso dos seus dados pessoais para os fins acima descritos. Caso tenha dúvidas sobre este termo ou sobre o tratamento dos seus dados, você pode entrar em contato através do nosso canal de atendimento.
               </p>
             </div>
+
             <div className="form-check">
               <label className="form-check-label">
                 <input
@@ -110,7 +128,7 @@ const FormComponent = () => {
                 <label>E-mail:</label>
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-controli"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -124,21 +142,27 @@ const FormComponent = () => {
                   className="form-controle"
                   value={age}
                   onChange={(e) => {
-                    let value = parseInt(e.target.value);
-                    if (isNaN(value)) {
-                      value = '';  // Limpa o campo se não for um número
-                    } else if (value < 18) {
-                      value = 18;
-                    } else if (value > 90) {
-                      value = 90;
+                    let value = e.target.value;
+
+                    // Permite apenas até dois dígitos
+                    if (value.length > 2) {
+                      value = value.slice(0, 2);
                     }
+
+                    // Converte para número
+                    value = parseInt(value);
+
+                
+
+                    // Atualiza o estado
                     setAge(value);
                   }}
                   min="18"
-                  max="90"
+                 
                   required
                 />
               </div>
+
             </div>
 
             <div className="row mb-3">

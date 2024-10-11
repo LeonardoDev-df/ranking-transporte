@@ -132,7 +132,7 @@
   }
   
   .terms-scroll {
-    max-height: 150px; /* Altura máxima da caixa de rolagem */
+    max-height: 350px; /* Altura máxima da caixa de rolagem */
     overflow-y: auto; /* Adiciona barra de rolagem vertical */
     padding: 10px; /* Preenchimento interno */
     border: 1px solid #ccc; /* Borda da caixa de rolagem */

@@ -16,7 +16,7 @@ import {
   Legend,
 } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, );
 
 const GraphComponent = () => {
   const [chartData, setChartData] = useState(null);
@@ -28,7 +28,7 @@ const GraphComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, 'avaliacoes'));
-
+      let totalAvaliacoesCount = querySnapshot.size; // Conta o número de documentos na coleção
       const empresas = {
         Marechal: {  totalPontos: 0, totalAvaliacoes: 0, design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, pontualidade: 0, limpeza: 0, conforto: 0, custo: 0, atendimento: 0, count: 0 },
         Pioneira: { totalPontos: 0, totalAvaliacoes: 0, design: 0, ergonomia: 0, ventilacao: 0, assento: 0, iluminacao: 0, pontualidade: 0, limpeza: 0, conforto: 0, custo: 0, atendimento: 0, count: 0 },
@@ -190,6 +190,7 @@ const GraphComponent = () => {
       setChartData(chartData);
       setItemData(itemData);
       setTotalAvaliacoes(querySnapshot.size);
+      setTotalAvaliacoes(totalAvaliacoesCount); // Define o total de avaliações
     };
 
     fetchData();
@@ -205,7 +206,7 @@ const GraphComponent = () => {
     scales: {
       y: {
         beginAtZero: true,
-        max: 60,
+        max: 100,
         ticks: {
           stepSize: 1,
           callback: (value) => value.toFixed(1),
@@ -213,10 +214,16 @@ const GraphComponent = () => {
       },
     },
     plugins: {
-      legend: { position: 'bottom' },
-      title: { display: true, text: 'Ranking Geral de Empresas de Transporte' },
+      legend: {
+        display: true,  // Exibe a legenda, se necessário
+      },
+      title: {
+        display: true,
+        text: `Ranking Geral de Empresas de Transporte (Total Avaliações: ${totalAvaliacoes})`,
+      },
     },
-  }), []);
+  }), [totalAvaliacoes]);
+  
 
   const itemOptions = useMemo(() => ({
     responsive: true,
@@ -224,7 +231,7 @@ const GraphComponent = () => {
     scales: {
       y: {
         beginAtZero: true,
-        max: 60,
+        max: 100,
         ticks: {
           stepSize: 1,
           callback: (value) => value.toFixed(1),
@@ -242,7 +249,7 @@ const GraphComponent = () => {
       <div className="container">
 
       <div className="graph-container">
-       
+     
         {chartData && <div className="chart-wrapper"><Bar data={chartData} options={chartOptions} /></div>}
         {itemData && (
           <Carousel activeIndex={index} onSelect={handleSelect} interval={null} className="carousel-custom">
