@@ -24,9 +24,9 @@ const GraphComponent = () => {
   const [totalAvaliacoes, setTotalAvaliacoes] = useState(0);
   const [empresasOrdenadas, setEmpresasOrdenadas] = useState([]);
   const [index, setIndex] = useState(0);
-
+window.location.reload();
   useEffect(() => {
-    window.location.reload();
+    
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, 'avaliacoes'));
       let totalAvaliacoesCount = querySnapshot.size;
