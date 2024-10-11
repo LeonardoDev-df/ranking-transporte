@@ -24,7 +24,7 @@ const GraphComponent = () => {
   const [totalAvaliacoes, setTotalAvaliacoes] = useState(0);
   const [empresasOrdenadas, setEmpresasOrdenadas] = useState([]);
   const [index, setIndex] = useState(0);
-window.location.reload();
+
   useEffect(() => {
     
     const fetchData = async () => {
