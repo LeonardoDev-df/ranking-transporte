@@ -4,7 +4,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import '../style/FormComponent.css'; // Importando o arquivo de estilo
 import { useNavigate } from 'react-router-dom'; // Importando useNavigate
 import CitySelect from './CitySelect'; // Importando o novo componente
-
+import Swal from 'sweetalert2'; // Importando SweetAlert2
 
 const FormComponent = () => {
   const navigate = useNavigate(); // Criando uma instância do useNavigate
@@ -25,7 +25,12 @@ const FormComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!acceptedTerms) {
-      alert('Você precisa aceitar os termos!');
+      Swal.fire({
+        title: 'Termos não aceitos',
+        text: 'Você precisa aceitar os termos para enviar a avaliação.',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
       return;
     }
 
@@ -37,14 +42,26 @@ const FormComponent = () => {
         ratings,
         timestamp: new Date(),
       });
-      alert('Avaliação enviada com sucesso!');
-      navigate('/'); // Redirecionar para a página inicial
-      
+
+      // Alerta de sucesso com SweetAlert2
+      Swal.fire({
+        title: 'Avaliação enviada com sucesso!',
+        text: 'Obrigado por responder ao formulário. Usaremos estas informações para melhorar o transporte público da sua região.',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#3085d6',
+        background: '#f7f7f7',
+      }).then(() => {
+        // Redirecionar após o alerta ser fechado
+        navigate('/');
+      });
+
+      // Resetar o formulário após o envio
       setEmail('');
       setAge('');
       setCity('');
       setAcceptedTerms(false);
-      setShowForm(false); // Reseta a exibição do formulário
+      setShowForm(false);
       setRatings({
         Piracicabana: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
         Pioneira: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
@@ -53,10 +70,17 @@ const FormComponent = () => {
         'São José/BsBus': { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
         Urbi: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
       });
+
     } catch (error) {
-      console.error('Erro ao enviar a avaliação: ', error);
+      Swal.fire({
+        title: 'Erro',
+        text: 'Houve um problema ao enviar a avaliação. Por favor, tente novamente.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   };
+
 
   const handleRatingChange = (empresa, categoria, value) => {
     setRatings(prevRatings => ({
