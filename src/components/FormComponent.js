@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { db } from '../data/firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore'; // Adicionando `query` e `getDocs`
 import '../style/FormComponent.css'; // Importando o arquivo de estilo
 import { useNavigate } from 'react-router-dom'; // Importando useNavigate
 import CitySelect from './CitySelect'; // Importando o novo componente
@@ -35,6 +35,22 @@ const FormComponent = () => {
     }
 
     try {
+      // Verificar se o e-mail já foi utilizado
+      const q = query(collection(db, 'avaliacoes'), where('email', '==', email));
+      const querySnapshot = await getDocs(q);
+  
+      if (!querySnapshot.empty) {
+        // E-mail já foi utilizado
+        Swal.fire({
+          title: 'E-mail já utilizado',
+          text: 'Este e-mail já foi usado para enviar uma avaliação.',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+        return; // Impedir o envio
+      }
+
+        // Se o e-mail não foi utilizado, continue com o envio
       await addDoc(collection(db, 'avaliacoes'), {
         email,
         age,
@@ -57,19 +73,19 @@ const FormComponent = () => {
       });
 
       // Resetar o formulário após o envio
-      setEmail('');
-      setAge('');
-      setCity('');
-      setAcceptedTerms(false);
-      setShowForm(false);
-      setRatings({
-        Piracicabana: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
-        Pioneira: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
-        Marechal: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
-        'Pioneira/BRT': { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
-        'São José/BsBus': { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
-        Urbi: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
-      });
+    setEmail('');
+    setAge('');
+    setCity('');
+    setAcceptedTerms(false);
+    setShowForm(false);
+    setRatings({
+      Piracicabana: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
+      Pioneira: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
+      Marechal: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
+      'Pioneira/BRT': { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
+      'São José/BsBus': { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
+      Urbi: { design: '', ergonomia: '', ventilacao: '', assento: '', iluminacao: '', pontualidade: '', limpeza: '', conforto: '', custo: '', atendimento: '' },
+    });
 
     } catch (error) {
       Swal.fire({

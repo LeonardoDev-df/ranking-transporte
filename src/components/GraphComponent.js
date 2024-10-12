@@ -27,7 +27,6 @@ const GraphComponent = () => {
   const [empresasOrdenadas, setEmpresasOrdenadas] = useState([]);
 
   useEffect(() => {
-    
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, 'avaliacoes'));
       let totalAvaliacoesCount = querySnapshot.size;
@@ -80,18 +79,18 @@ const GraphComponent = () => {
 
       var lote = empresas.Marechal.totalAvaliacoes;
 
-     // lote = parseInt(lote); // Transforma lote em inteiro
+      lote = parseInt(lote); // Transforma lote em inteiro
       console.log(lote);
 
       setEmpresasOrdenadas(empresasOrdenadas);
      
-console.log()
+
       const chartData = {
         labels: empresasOrdenadas.map((e) => e.empresa),
         datasets: [
           {
-            label: ` - Avaliação  `,
-            data: empresasOrdenadas.map((e) => (e.media / lote ).toFixed(1)), 
+            label: `Top Empresa: ${empresaTop.empresa}`,
+            data: empresasOrdenadas.map((e) => (e.media / 10 ).toFixed(1)), 
             backgroundColor: empresasOrdenadas.map((e) => {
               switch (e.empresa) {
                 case 'Piracicabana':
