@@ -80,17 +80,17 @@ const GraphComponent = () => {
 
       var lote = empresas.Marechal.totalAvaliacoes;
 
-      lote = parseInt(lote); // Transforma lote em inteiro
+     // lote = parseInt(lote); // Transforma lote em inteiro
       console.log(lote);
 
       setEmpresasOrdenadas(empresasOrdenadas);
      
-
+console.log()
       const chartData = {
         labels: empresasOrdenadas.map((e) => e.empresa),
         datasets: [
           {
-            label: `Top Empresa: ${empresaTop.empresa}`,
+            label: ` - Avaliação  `,
             data: empresasOrdenadas.map((e) => (e.media / lote ).toFixed(1)), 
             backgroundColor: empresasOrdenadas.map((e) => {
               switch (e.empresa) {
