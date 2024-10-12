@@ -3,13 +3,11 @@ import '../style/styles.css'; // Importando o arquivo de estilo
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBus } from '@fortawesome/free-solid-svg-icons'; // Ícone de ônibus
 import '../style/Navbar.css';
-import GraphComponent from './GraphComponent'; // Importando o componente do gráfico
 import { Link } from 'react-router-dom';
 
 
 
 const Navbar = () => {
-  const [showGraph, setShowGraph] = useState(false); // Estado para controlar a exibição do gráfico
 
   useEffect(() => {
     const navbarShrink = () => {
